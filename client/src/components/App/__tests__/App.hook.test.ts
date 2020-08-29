@@ -16,11 +16,10 @@ describe("AppHook test", () => {
         fetchMock.mockResponseOnce(JSON.stringify(mockedMoveResponse))
 
         const pressKey = result.current.pressKey
-        pressKey(Move.east)
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        
         await act(async () => {
+            pressKey(Move.east)
         });
-
         expect(result.current.state.endGame).toEqual(true)
     })
 
