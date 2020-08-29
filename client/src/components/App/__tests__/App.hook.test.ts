@@ -15,12 +15,28 @@ describe("AppHook test", () => {
         const {result} = renderHook(() => useApp())
         fetchMock.mockResponseOnce(JSON.stringify(mockedMoveResponse))
 
-        const pressKey = result.current.pressKey
-        
         await act(async () => {
-            pressKey(Move.east)
+            result.current.pressKey(Move.east)
         });
         expect(result.current.state.endGame).toEqual(true)
+    })
+
+    test("Restart is working is working", async () => {
+        const {result} = renderHook(() => useApp())
+        fetchMock.mockResponseOnce(JSON.stringify(mockedMoveResponse))
+
+        await act(async () => {
+            result.current.pressKey(Move.east)
+        });
+
+        expect(result.current.state.endGame).toEqual(true)
+
+        await act(async () => {
+            result.current.restart()
+        });
+        
+        expect(result.current.state.endGame).toEqual(false)
+
     })
 
 })
