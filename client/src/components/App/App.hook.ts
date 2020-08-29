@@ -10,10 +10,10 @@ interface AppHookState {
 }
 
 export const initialState: AppHookState = {
-    message: "Help Frodo to destroy the Ring!!!",
+    message: "Sam! I was waiting for you! Let's go!!",
     moves: [],
     endGame: false,
-    imgSrc: "https://i.pinimg.com/736x/28/b9/8f/28b98f7cdce838278d683d3b809c8f1e.jpg",
+    imgSrc: "https://img1.looper.com/img/gallery/frodo-baggins-entire-backstory-explained/intro-1582640416.jpg",
 }
 
 const reducer = (state:AppHookState, action:any) => ({...state, ...action})
