@@ -27,12 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "jest": {
-    "automock": false,
-    "setupFiles": [
-      "./setupJest.js"
-    ]
-  },
+
   "eslintConfig": {
     "extends": "react-app"
   },
