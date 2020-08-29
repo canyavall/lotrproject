@@ -34,8 +34,26 @@ describe("AppHook test", () => {
         await act(async () => {
             result.current.restart()
         });
-        
+
         expect(result.current.state.endGame).toEqual(false)
+
+    })
+
+    test("Request return 500", async () => {
+        const {result} = renderHook(() => useApp())
+        fetchMock.mockResponseOnce(JSON.stringify({}), {status:500})
+
+        await act(async () => {
+            result.current.pressKey(Move.east)
+        });
+        const expectedResult = {
+            message: 'Looks like we lost the connection with the Mount Doom',
+            moves: [],
+            endGame: false,
+            imgSrc: 'https://img.cinemablend.com/filter:scale/quill/8/0/f/e/4/2/80fe42c3bc4c116f7d4f8c0d08c5641f7c4b9798.jpg?mw=600'
+        }
+
+        expect(result.current.state).toEqual(expectedResult)
 
     })
 

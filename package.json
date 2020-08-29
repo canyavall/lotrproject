@@ -1,12 +1,19 @@
 {
-  "name": "LOTR",
+  "name": "lotrproject",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": "Miguel Perello Garcia",
   "scripts": {
     "start": "concurrently \"yarn start-server\" \"yarn start-client\"",
     "start-client": "cd client && yarn start",
     "start-server": "cd server && yarn start",
+    "test": "concurrently \"yarn test-server\" \"yarn test-client\"",
+    "test-client": "cd client && yarn jest",
+    "test-server": "cd server && yarn jest",
+    "install-all": "concurrently \"yarn install-server\" \"yarn install-client\"",
+    "install-client": "cd client && yarn",
+    "install-server": "cd server && yarn",
     "build": "tsc --project ./"
   }
 }
